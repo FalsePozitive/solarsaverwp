@@ -120,24 +120,20 @@ add_action( 'widgets_init', 'solar_saver_widgets_init' );
  * Enqueue scripts and styles.
  */
 function solar_saver_scripts() {
-	wp_enqueue_style( 'solar_saver-style', get_stylesheet_uri() );
-    wp_register_style( 'Font_Awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css' );
-    wp_enqueue_style('Font_Awesome');
-	wp_enqueue_script( 'solar_saver-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
-	wp_enqueue_script( 'solar_saver-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
-	wp_register_script( 'jQuery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js', null, null, true );
+	
+  	wp_register_script( 'jQuery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js' );
+	wp_register_script( 'leafjs', 'https://unpkg.com/leaflet@1.5.1/dist/leaflet.js' );
+	
+	wp_register_style( 'Tachyons', 'https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css' );
+	wp_register_style( 'Font_Awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css' );
+    wp_register_style( 'leafstyle', 'https://unpkg.com/leaflet@1.5.1/dist/leaflet.css' );
+	
 	wp_enqueue_script('jQuery');
-	wp_register_script( 'popper', 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/popper.min.js', null, null, true );
-	wp_enqueue_script('popper');
-	wp_register_style( 'bootstyle', 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css' );
-	wp_enqueue_style('bootstyle');
-	wp_register_script( 'bootstrapjs', 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js', null, null, true );
-	wp_enqueue_script('bootstrapjs');
-	wp_register_style( 'leafstyle', 'https://unpkg.com/leaflet@1.5.1/dist/leaflet.css' );
-	wp_enqueue_style('leafstyle');
-	wp_register_script( 'leafjs', 'https://unpkg.com/leaflet@1.5.1/dist/leaflet.js', null, null, true );
 	wp_enqueue_script('leafjs');
 	
+	wp_enqueue_style('Tachyons');
+	wp_enqueue_style('Font_Awesome');
+	wp_enqueue_style('leafstyle');
 	
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
